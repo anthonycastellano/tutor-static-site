@@ -25,7 +25,7 @@ export default function Home() {
         headingRef.current.innerText = headingRef.current.innerText
           .split("")
           .map((letter, index) => {
-            if (index < iteration) {
+            if (index < iteration || letter === ' ') {
               return headingRef.current.dataset.value[index];
             }
 
@@ -47,8 +47,8 @@ export default function Home() {
       className={`${geistSans.variable} ${geistMono.variable} flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
     >
       <header className="w-full text-white py-4">
-        <div className="max-w-3xl mx-auto px-6 items-center justify-center flex flex-row">
-          <h1 ref={headingRef} data-value="Castellano Coding" className="text-5xl font-bold max-w-xs md:max-w-lg">Castellano Coding</h1>
+        <div className="max-w-3xl mx-auto px-6 items-center justify-center flex flex-row text-center">
+          <h1 ref={headingRef} data-value="Castellano Coding" className="text-5xl font-bold max-w-xs md:max-w-xl">Castellano Coding</h1>
         </div>
       </header>
       
