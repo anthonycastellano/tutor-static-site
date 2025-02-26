@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { useEffect, useRef, SyntheticEvent } from "react";
+import { useEffect, useRef } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,46 +11,54 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const HACKER_TEXT_INTERVAL: number = 35;
+const HACKER_TEXT_INTERVAL = 35;
 
 export default function Home() {
-  const headingRef = useRef(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    if (headingRef && headingRef.current) {
+      const headingElement = headingRef.current;
+      const headingElementValue = headingElement?.dataset.value;
+      if (!headingElement || !headingElementValue ) return;
+      
       const letters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       let iteration: number = 0;
 
-      let interval: NodeJS.Timeout = setInterval(() => {
-        headingRef.current.innerText = headingRef.current.innerText
+      const interval: NodeJS.Timeout = setInterval(() => {
+        headingElement.innerText = headingElement.innerText
           .split("")
           .map((letter, index) => {
             if (index < iteration || letter === ' ') {
-              return headingRef.current.dataset.value[index];
+              return headingElementValue [index];
             }
 
             return letters[Math.floor(Math.random() * letters.length)];
           })
           .join("");
 
-      if (iteration >= headingRef.current.dataset.value.length) {
+      if (iteration >= headingElementValue .length) {
         clearInterval(interval);
       }
 
       iteration += 1;
-      }, HACKER_TEXT_INTERVAL);
-    }
+    }, HACKER_TEXT_INTERVAL);
+
+    return () => { clearInterval(interval) }
   }, []);
 
   return (
     <div
-      className={`${geistSans.variable} ${geistMono.variable} flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
+      className={`${geistSans.variable} ${geistMono.variable}
+      flex flex-col items-center justify-center min-h-screen 
+      p-8 pb-20 gap-4 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
     >
       <header className="w-full text-white py-4">
         <div className="max-w-3xl mx-auto px-6 items-center justify-center flex flex-row text-center">
           <h1 ref={headingRef} data-value="Castellano Coding" className="text-5xl font-bold max-w-xs md:max-w-xl">Castellano Coding</h1>
         </div>
       </header>
+
+      <img className="w-48 h-48 rounded-full overflow-hidden object-cover" src="headshot.jpg" alt="Tutor portrait"></img>
       
       <main className="text-center px-6 py-12 max-w-3xl">
         <h1 className="text-4xl md:text-4xl font-bold mb-4">
@@ -86,20 +94,13 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-6 text-center">About Me</h2>
         <div className="bg-gray-300 p-6 rounded-lg shadow-sm text-gray-700">
           <p className="mb-4">
-            Hi, I’m Anthony Castellano, a passionate educator with over 10 years of experience helping students
-            succeed. I specialize in [your subjects, e.g., math, science, or language arts], and I
-            believe every learner has the potential to shine with the right guidance.
+            Hi, I’m Anthony Castellano, and I love Liz. 
           </p>
           <p className="mb-4">
-            My journey started when I noticed how one-size-fits-all teaching left so many students
-            behind. That’s why I focus on personalized plans—whether you’re catching up, aiming for
-            top grades, or preparing for exams like the SAT or ACT. I’ve worked with students of all
-            ages, from elementary to college level, and I’m proud to see them grow in confidence and
-            skill.
+            I love her a lot.
           </p>
           <p>
-            When I’m not tutoring, you’ll find me [your hobbies, e.g., reading, hiking, or playing
-            chess], always learning something new myself. Let’s work together to reach your goals!
+            Hello.
           </p>
         </div>
       </section>
