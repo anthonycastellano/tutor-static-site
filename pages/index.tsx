@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { useEffect, useRef, SyntheticEvent } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,14 +11,44 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const HACKER_TEXT_INTERVAL: number = 35;
+
 export default function Home() {
+  const headingRef = useRef(null);
+
+  useEffect(() => {
+    if (headingRef && headingRef.current) {
+      const letters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let iteration: number = 0;
+
+      let interval: NodeJS.Timeout = setInterval(() => {
+        headingRef.current.innerText = headingRef.current.innerText
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) {
+              return headingRef.current.dataset.value[index];
+            }
+
+            return letters[Math.floor(Math.random() * letters.length)];
+          })
+          .join("");
+
+      if (iteration >= headingRef.current.dataset.value.length) {
+        clearInterval(interval);
+      }
+
+      iteration += 1;
+      }, HACKER_TEXT_INTERVAL);
+    }
+  }, []);
+
   return (
     <div
       className={`${geistSans.variable} ${geistMono.variable} flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
     >
       <header className="w-full text-white py-4">
         <div className="max-w-3xl mx-auto px-6 items-center justify-center flex flex-row">
-          <h1 className="text-5xl font-bold ">Castellano Coding</h1>
+          <h1 ref={headingRef} data-value="Castellano Coding" className="text-5xl font-bold max-w-xs md:max-w-lg">Castellano Coding</h1>
         </div>
       </header>
       
