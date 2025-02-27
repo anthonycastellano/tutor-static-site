@@ -38,26 +38,26 @@ export default function Home() {
 
   // on page load, animate heading text
   useEffect(() => {
-      const headingElement = headingRef.current;
-      const headingElementValue = headingElement?.dataset.value;
-      if (!headingElement || !headingElementValue ) return;
-      
-      const letters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      let iteration: number = 0;
+    const headingElement = headingRef.current;
+    const headingElementValue = headingElement?.dataset.value;
+    if (!headingElement || !headingElementValue) return;
 
-      const interval: NodeJS.Timeout = setInterval(() => {
-        headingElement.innerText = headingElement.innerText
-          .split("")
-          .map((letter, index) => {
-            if (index < iteration || letter === ' ') {
-              return headingElementValue [index];
-            }
+    const letters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let iteration: number = 0;
 
-            return letters[Math.floor(Math.random() * letters.length)];
-          })
-          .join("");
+    const interval: NodeJS.Timeout = setInterval(() => {
+      headingElement.innerText = headingElement.innerText
+        .split("")
+        .map((letter, index) => {
+          if (index < iteration || letter === ' ') {
+            return headingElementValue[index];
+          }
 
-      if (iteration >= headingElementValue .length) {
+          return letters[Math.floor(Math.random() * letters.length)];
+        })
+        .join("");
+
+      if (iteration >= headingElementValue.length) {
         clearInterval(interval);
       }
 
@@ -95,7 +95,7 @@ export default function Home() {
       </header>
 
       <img className="w-48 h-48 rounded-full overflow-hidden object-cover" src="headshot.jpg" alt="Tutor portrait"></img>
-      
+
       <main className="text-center px-6 py-12 max-w-3xl">
         <h1 className="text-4xl md:text-4xl font-bold mb-4">
           Personalized Tutoring for Every Learner
@@ -111,21 +111,21 @@ export default function Home() {
         </a>
       </main>
 
-      <div className={`md:hidden transition-opacity duration-300 ease-in-out${showArrow? "" : " opacity-0"}`}>Or scroll for details</div>
+      <div className={`md:hidden transition-opacity duration-300 ease-in-out${showArrow ? "" : " opacity-0"}`}>Or scroll for details</div>
       <DownArrow shown={showArrow} />
 
       <section className="flex flex-col md:flex-row gap-8 px-6 py-12 text-center">
         <div className="flex-1">
-          <h3 className="text-xl font-semibold mb-2">Flexible Scheduling</h3>
-          <p className="text-gray-400">Learn at your pace, on your time.</p>
-        </div>
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold mb-2">Expert Tutors</h3>
-          <p className="text-gray-400">Guidance from experienced professionals.</p>
-        </div>
-        <div className="flex-1">
           <h3 className="text-xl font-semibold mb-2">Custom Plans</h3>
-          <p className="text-gray-400">Lessons designed just for you.</p>
+          <p className="text-gray-400">Lessons designed for each student, no matter the skill level.</p>
+        </div>
+        <div className="flex-1">
+          <h3 className="text-xl font-semibold mb-2">Wide Range of Subjects</h3>
+          <p className="text-gray-400">Learn to code, build apps, and create websites.</p>
+        </div>
+        <div className="flex-1">
+          <h3 className="text-xl font-semibold mb-2">Expert Tutor</h3>
+          <p className="text-gray-400">One-on-one guidance from an experienced professional.</p>
         </div>
       </section>
 
@@ -133,19 +133,24 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-6 text-center">About Me</h2>
         <div className="bg-gray-300 p-6 rounded-lg shadow-sm text-gray-700">
           <p className="mb-4">
-            Hi, I’m Anthony Castellano, and I love Liz. 
+            Hi, I’m Anthony Castellano, a seasoned software developer with nearly 10 years of experience building innovative solutions.
+            I hold a Bachelor of Science in Computer Science from the University of South Carolina (Magna Cum Laude, 2021) and currently
+            work as a Technical Solution Consultant at IBM, where I design and deploy cutting-edge tools like AI chatbots, machine learning
+            models, and high-speed data systems. My passion for coding drives me to help the next generation master these skills.
           </p>
           <p className="mb-4">
-            I love her a lot.
+            I’ve spent years tutoring young learners through Coding4Youth, guiding kids in my community to create their first programs, games,
+            and websites. Whether it’s Python, JavaScript, or Scratch, I break down complex concepts into fun, hands-on lessons tailored to
+            each student. My professional toolkit—spanning JavaScript, Java, Python, and cloud platforms like AWS and Azure—lets me teach 
+            real-world development skills that spark creativity and problem-solving.
           </p>
           <p>
-            Hello.
+            When I’m not coding or tutoring, I’m exploring new tech, earning credentials (like CompTIA Security+ and Red Hat OpenShift), or 
+            tinkering with side projects. I’m here in Miami to help your kids turn their curiosity into coding confidence—let’s build 
+            something awesome together!
           </p>
         </div>
       </section>
-
-      <footer className="text-gray-500 text-sm py-6">
-      </footer>
     </div>
   );
 }
