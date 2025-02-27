@@ -1,7 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
-import Image from 'next/image';
-import SVGIMG from '@/public/arrow.svg';
 
 // constants
 const HACKER_TEXT_INTERVAL = 50;
