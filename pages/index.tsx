@@ -1,5 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from 'next/image';
+import SVGIMG from '@/public/arrow.svg';
+
+// constants
+const HACKER_TEXT_INTERVAL = 50;
+const ARROW_SCROLL_LIMIT = 100;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,11 +17,28 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const HACKER_TEXT_INTERVAL = 35;
+interface DownArrowProps {
+  shown: boolean;
+}
+const DownArrow = ({ shown }: DownArrowProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 32 32"
+    className={`w-8 h-8 text-white animate-bounce md:hidden transition-opacity duration-300 ease-in-out${shown ? "" : " opacity-0"}`}
+  >
+    <path
+      d="M26.29 20.29 18 28.59V0h-2v28.59l-8.29-8.3-1.42 1.42 10 10a1 1 0 0 0 1.41 0l10-10z"
+      data-name="2-Arrow Down"
+      fill="white"
+    />
+  </svg>
+);
 
 export default function Home() {
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const [showArrow, setShowArrow] = useState(true); // state to toggle arrow visibility
 
+  // on page load, animate heading text
   useEffect(() => {
       const headingElement = headingRef.current;
       const headingElementValue = headingElement?.dataset.value;
@@ -43,7 +66,22 @@ export default function Home() {
       iteration += 1;
     }, HACKER_TEXT_INTERVAL);
 
-    return () => { clearInterval(interval) }
+    return () => clearInterval(interval);
+  }, []);
+
+  // scroll listener to hide arrow
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > ARROW_SCROLL_LIMIT) { // hide after scrolling 100px
+        setShowArrow(false);
+      } else {
+        setShowArrow(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -74,6 +112,9 @@ export default function Home() {
           Get Started
         </a>
       </main>
+
+      <div className={`md:hidden transition-opacity duration-300 ease-in-out${showArrow? "" : " opacity-0"}`}>Or scroll for details</div>
+      <DownArrow shown={showArrow} />
 
       <section className="flex flex-col md:flex-row gap-8 px-6 py-12 text-center">
         <div className="flex-1">
@@ -106,7 +147,6 @@ export default function Home() {
       </section>
 
       <footer className="text-gray-500 text-sm py-6">
-        <p>&copy; 2025 Tutoring Services. All rights reserved.</p>
       </footer>
     </div>
   );
