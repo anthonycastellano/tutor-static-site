@@ -1,9 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 // constants
 const HACKER_TEXT_INTERVAL = 50;
-const ARROW_SCROLL_LIMIT = 100;
+const ARROW_SCROLL_LIMIT = 150;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,12 +104,12 @@ export default function Home() {
         <p className="text-lg text-gray-400 mb-8">
           Unlock your potential with one-on-one lessons tailored to your goals.
         </p>
-        <a
+        <Link
           href="/signup"
           className="inline-block bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-200"
         >
           Get Started
-        </a>
+        </Link>
       </main>
 
       <div className={`md:hidden transition-opacity duration-300 ease-in-out${showArrow ? "" : " opacity-0"}`}>Or scroll for details</div>
