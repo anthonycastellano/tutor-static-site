@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Head from "next/head";
 
 // constants
 const HACKER_TEXT_INTERVAL = 50;
@@ -89,13 +91,16 @@ export default function Home() {
       flex flex-col items-center justify-center min-h-screen 
       p-8 pb-20 gap-4 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
     >
+      <Head>
+        <title>Castellano Coding</title>
+      </Head>
       <header className="w-full text-white py-4">
         <div className="max-w-3xl mx-auto px-6 items-center justify-center flex flex-row text-center">
           <h1 ref={headingRef} data-value="Castellano Coding" className="text-5xl font-bold max-w-xs md:max-w-xl">Castellano Coding</h1>
         </div>
       </header>
 
-      <img className="w-48 h-48 rounded-full overflow-hidden object-cover" src="headshot.jpg" alt="Tutor portrait"></img>
+      <Image className="w-48 h-48 rounded-full overflow-hidden object-cover" src="headshot.jpg" alt="Tutor portrait"></Image>
 
       <main className="text-center px-6 py-12 max-w-3xl">
         <h1 className="text-4xl md:text-4xl font-bold mb-4">
