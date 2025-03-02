@@ -104,7 +104,7 @@ export default function Home() {
         <Image className="rounded-full overflow-hidden object-cover" layout="fill" src="headshot.jpg" alt="Tutor portrait"></Image>
       </div>
 
-      <main className="text-center px-6 py-12 max-w-3xl">
+      <main className="text-center px-6 py-8 max-w-3xl">
         <h1 className="text-4xl md:text-4xl font-bold mb-4">
           Personalized Tutoring for Every Learner
         </h1>
@@ -129,7 +129,7 @@ export default function Home() {
         </div>
         <div className="flex-1">
           <h3 className="text-xl font-semibold mb-2">Wide Range of Subjects</h3>
-          <p className="text-gray-400">Learn to code, build apps, and create websites.</p>
+          <p className="text-gray-400">Learn to code, build apps, and integrate AI.</p>
         </div>
         <div className="flex-1">
           <h3 className="text-xl font-semibold mb-2">Expert Tutor</h3>
@@ -137,10 +137,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full max-w-3xl px-6 py-12">
+      <section className="w-full max-w-3xl pt-12">
         <h2 className="text-3xl font-bold mb-6 text-center">About Me</h2>
-        <div className="bg-gray-300 p-6 rounded-lg shadow-sm text-gray-700">
-          <p className="mb-4">
+        <div className="p-6 text-gray-400">
+          <p className="rounded-xl pl-0 mb-4">
             Hi, I’m Anthony Castellano, a seasoned software developer with nearly 10 years of experience building innovative solutions.
             I hold a Bachelor of Science in Computer Science from the University of South Carolina (Magna Cum Laude, 2021) and currently
             work as a Technical Solution Consultant at IBM, where I design and deploy cutting-edge tools like AI chatbots, machine learning
@@ -149,16 +149,22 @@ export default function Home() {
           <p className="mb-4">
             I’ve spent years tutoring young learners through Coding4Youth, guiding kids in my community to create their first programs, games,
             and websites. Whether it’s Python, JavaScript, or Scratch, I break down complex concepts into fun, hands-on lessons tailored to
-            each student. My professional toolkit—spanning JavaScript, Java, Python, and cloud platforms like AWS and Azure—lets me teach 
+            each student. My professional toolkit—spanning JavaScript, Java, Python, and cloud platforms like AWS and Azure—lets me teach
             real-world development skills that spark creativity and problem-solving.
           </p>
           <p>
-            When I’m not coding or tutoring, I’m exploring new tech, earning credentials (like CompTIA Security+ and Red Hat OpenShift), or 
-            tinkering with side projects. I’m here in Miami to help your kids turn their curiosity into coding confidence—let’s build 
+            When I’m not coding or tutoring, I’m exploring new tech, earning credentials (like CompTIA Security+ and Red Hat OpenShift), or
+            tinkering with side projects. I’m here in Miami to help your kids turn their curiosity into coding confidence—let’s build
             something awesome together!
           </p>
         </div>
       </section>
+      <Link
+        href="/signup"
+        className="inline-block bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-200"
+      >
+        Get Started
+      </Link>
     </div>
   );
 }
