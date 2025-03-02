@@ -3,9 +3,9 @@ import Link from "next/link";
 export default function SignUp() {
   return (
     <div>
-      <Link className="ml-2 mt-1 fixed" href="/">
+      <div className="ml-2 mt-1 fixed w-full">
+      <Link href="/">
         <svg
-          
           width="64px"
           height="64px"
           viewBox="0 0 1024 1024"
@@ -36,6 +36,7 @@ export default function SignUp() {
           </g>
         </svg>
       </Link>
+      </div>
       <div className="flex flex-col items-center justify-center mx-8 max-h-screen">
         <iframe
           src="https://docs.google.com/forms/d/e/1FAIpQLSeo7bzBDpO3BJwXsTP3l0qJCrVt9LFZ_y-pn5GKJ8B6-1RxyA/viewform?embedded=true"
