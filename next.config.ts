@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  // basePath: '/castellano-coding',
-  // assetPrefix: '/castellano-coding',
+  basePath: '/castellano-coding',
+  assetPrefix: '/castellano-coding',
 };
 
 export default nextConfig;

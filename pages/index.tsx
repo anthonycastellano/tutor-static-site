@@ -104,10 +104,8 @@ export default function Home() {
         <Image
           className="rounded-full overflow-hidden object-cover"
           layout="fill"
-          src="headshot.jpg"
+          src="/castellano-coding/headshot.jpg"
           alt="Tutor portrait"
-          key="headshot-img"
-          priority
         >
         </Image>
       </div>
