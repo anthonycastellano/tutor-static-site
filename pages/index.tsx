@@ -101,7 +101,15 @@ export default function Home() {
       </header>
 
       <div className="relative w-48 h-48">
-        <Image className="rounded-full overflow-hidden object-cover" layout="fill" src="headshot.jpg" alt="Tutor portrait"></Image>
+        <Image
+          className="rounded-full overflow-hidden object-cover"
+          layout="fill"
+          src="headshot.jpg"
+          alt="Tutor portrait"
+          key="headshot-img"
+          priority
+        >
+        </Image>
       </div>
 
       <main className="text-center px-6 py-8 max-w-3xl">
