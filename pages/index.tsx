@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
+import Modal from "@/components/modal"
 
 // constants
 const HACKER_TEXT_INTERVAL = 50;
@@ -38,6 +38,7 @@ const DownArrow = ({ shown }: DownArrowProps) => (
 export default function Home() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [showArrow, setShowArrow] = useState(true); // state to toggle arrow visibility
+  const [showModal, setShowModal] = useState(false);
 
   // on page load, animate heading text
   useEffect(() => {
@@ -117,12 +118,12 @@ export default function Home() {
         <p className="text-lg text-gray-400 mb-8">
           Unlock your potential with one-on-one lessons tailored to your goals.
         </p>
-        <Link
-          href="/signup"
+        <button
           className="inline-block bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-200"
+          onClick={() => setShowModal(true)}
         >
           Get Started
-        </Link>
+        </button>
       </main>
 
       <div className={`md:hidden transition-opacity duration-300 ease-in-out${showArrow ? "" : " opacity-0"}`}>Or scroll for details</div>
@@ -138,8 +139,8 @@ export default function Home() {
           <p className="text-gray-400">Learn to code, build apps, and integrate AI.</p>
         </div>
         <div className="flex-1">
-          <h3 className="text-xl font-semibold mb-2">Expert Tutor</h3>
-          <p className="text-gray-400">One-on-one guidance from an experienced professional.</p>
+          <h3 className="text-xl font-semibold mb-2">Flexible Scheduling</h3>
+          <p className="text-gray-400">In-home or remote instruction available.</p>
         </div>
       </section>
 
@@ -165,12 +166,13 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <Link
-        href="/signup"
+      <button
         className="inline-block bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-200"
+        onClick={() => setShowModal(true)}
       >
         Get Started
-      </Link>
+      </button>
+      {showModal && <Modal setShowModal={setShowModal} />}
     </div>
   );
 }
