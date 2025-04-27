@@ -138,8 +138,8 @@ export default function Home() {
           <p className="text-gray-400">Learn to code, build apps, and integrate AI.</p>
         </div>
         <div className="flex-1">
-          <h3 className="text-xl font-semibold mb-2">Expert Tutor</h3>
-          <p className="text-gray-400">One-on-one guidance from an experienced professional.</p>
+          <h3 className="text-xl font-semibold mb-2">Hybrid Learning</h3>
+          <p className="text-gray-400">One-on-one guidance in-person and/or remotely (via Google Meet).</p>
         </div>
       </section>
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function SignUp() {
   return (
     <div>
-      <div className="ml-2 mt-1 fixed w-full bg-[#0a0a0a]">
+      <div className="fixed w-full bg-[#0a0a0a]">
         <Link href="/">
           <svg
             width="64px"
